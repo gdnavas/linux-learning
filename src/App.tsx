@@ -1,3 +1,4 @@
+import { Capacitor } from "@capacitor/core";
 import { IonApp, IonRouterOutlet, IonTabs, IonTabBar, IonTabButton, IonIcon, IonLabel } from "@ionic/react";
 import { IonReactRouter } from "@ionic/react-router";
 import { Route, Redirect, useLocation } from "react-router-dom";
@@ -61,9 +62,10 @@ function AppLayout() {
 }
 
 function App() {
+  const basename = Capacitor.isNativePlatform() ? "/" : "/linux-learning";
   return (
     <IonApp>
-      <IonReactRouter>
+      <IonReactRouter basename={basename}>
         <AppLayout />
       </IonReactRouter>
     </IonApp>
